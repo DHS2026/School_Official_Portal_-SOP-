@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhainagar High School - SOP</title>
     <style>
-        /* Blacked Maroon & Matching Neon Theme */
+        /* Professional Deep Navy Blue & Soft Gold Theme */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at center, #2e0005 0%, #0a0000 100%);
-            color: #ffffff;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); /* Deep Slate Blue */
+            color: #f8fafc;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -17,18 +17,18 @@
             min-height: 100vh;
         }
         .container {
-            background-color: rgba(15, 0, 3, 0.85);
+            background-color: rgba(15, 23, 42, 0.85);
             width: 100%;
             max-width: 650px;
             padding: 40px;
-            border-radius: 15px;
-            border: 2px solid #8b0021; /* Dark Maroon Border */
-            box-shadow: 0 0 20px #a30027, inset 0 0 15px #a30027; /* Maroon Neon Glow */
+            border-radius: 12px;
+            border: 1px solid #38bdf8; /* Soft Sky Blue Border */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
             text-align: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
         
-        /* Neon Logo Effect (Maroon) */
+        /* Subtle Logo Effect */
         .logo-container {
             margin-bottom: 20px;
         }
@@ -38,88 +38,87 @@
             border-radius: 50%;
             object-fit: cover;
             background-color: #fff;
-            border: 3px solid #8b0021;
-            box-shadow: 0 0 15px #c70039, 0 0 30px #c70039, inset 0 0 15px #c70039;
-            animation: pulse-neon-maroon 2s infinite alternate;
+            border: 3px solid #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            animation: pulse-soft 3s infinite alternate;
         }
-        @keyframes pulse-neon-maroon {
-            0% { box-shadow: 0 0 10px #a30027, 0 0 20px #a30027; }
-            100% { box-shadow: 0 0 20px #e6004c, 0 0 40px #e6004c, 0 0 50px #e6004c; }
+        @keyframes pulse-soft {
+            0% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.7); }
         }
 
         /* Typography */
         .school-name {
-            color: #ff4d6d;
+            color: #fbbf24; /* Regal Gold/Amber for School Name */
             font-size: 28px;
             font-weight: bold;
             margin: 10px 0;
-            text-shadow: 0 0 10px #c70039, 0 0 20px #c70039;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             letter-spacing: 1px;
         }
         .school-details {
-            color: #ffccd5;
+            color: #cbd5e1; /* Soft Light Gray */
             font-size: 15px;
             margin: 4px 0;
-            text-shadow: 0 0 5px #a30027;
         }
         hr {
             margin: 25px 0;
             border: 0;
-            border-top: 1px solid #8b0021;
-            box-shadow: 0 0 10px #c70039;
+            border-top: 1px solid #334155;
         }
         .portal-title {
-            color: #ff809f;
-            font-size: 24px;
+            color: #38bdf8; /* Soft Sky Blue */
+            font-size: 22px;
             margin-bottom: 25px;
-            text-shadow: 0 0 10px #c70039, 0 0 20px #c70039;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
-        /* Login Box (Neon Style) */
+        /* Login Box (Professional Style) */
         .login-box {
-            background: rgba(10, 0, 0, 0.6);
+            background: rgba(30, 41, 59, 0.6);
             padding: 25px;
             border-radius: 10px;
-            border: 1px solid #8b0021;
-            box-shadow: 0 0 15px rgba(199, 0, 57, 0.4);
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
         .input-field {
             width: 80%;
             padding: 12px;
             margin: 10px 0;
-            background: #110000;
-            border: 1px solid #8b0021;
+            background: #0f172a;
+            border: 1px solid #475569;
             border-radius: 5px;
-            color: #ffb3c6;
+            color: #f8fafc;
             font-size: 16px;
             outline: none;
-            box-shadow: inset 0 0 5px #8b0021;
             transition: 0.3s;
         }
-        .input-field::placeholder { color: #888; }
-        .input-field:focus { box-shadow: 0 0 10px #c70039, inset 0 0 10px #c70039; border-color: #c70039; }
+        .input-field::placeholder { color: #94a3b8; }
+        .input-field:focus { 
+            border-color: #38bdf8; 
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); 
+        }
         
         .captcha-container { margin: 15px 0; }
         .captcha-text {
             display: inline-block;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
-            letter-spacing: 6px;
-            background: #2b000a;
-            color: #ff4d6d;
+            letter-spacing: 8px;
+            background: #1e293b;
+            color: #fbbf24;
             padding: 10px 25px;
             border-radius: 5px;
-            border: 1px dashed #c70039;
-            text-shadow: 0 0 10px #c70039;
+            border: 1px dashed #fbbf24;
             text-decoration: line-through;
             user-select: none;
         }
         .btn-submit {
-            background: transparent;
-            color: #ff809f;
-            border: 2px solid #8b0021;
+            background: #2563eb; /* Professional Blue */
+            color: #fff;
+            border: none;
             padding: 12px 35px;
             font-size: 18px;
             border-radius: 5px;
@@ -127,24 +126,21 @@
             margin-top: 15px;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 0 10px #8b0021;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             transition: 0.3s;
         }
         .btn-submit:hover {
-            background: #8b0021;
-            color: #fff;
-            box-shadow: 0 0 20px #c70039, 0 0 40px #c70039;
-            border-color: #c70039;
+            background: #3b82f6;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
         }
         .error-msg {
-            color: #ff3333;
+            color: #ef4444;
             font-weight: bold;
-            text-shadow: 0 0 5px red;
             margin-bottom: 10px;
             display: none;
         }
 
-        /* Dashboard & Neon Buttons */
+        /* Dashboard & Clean Buttons */
         .dashboard-box {
             display: none;
             margin-top: 20px;
@@ -153,25 +149,24 @@
             display: block;
             width: 90%;
             margin: 12px auto;
-            background: rgba(20, 0, 5, 0.5);
-            color: #ffccd5;
-            border: 1px solid #8b0021;
+            background: rgba(30, 41, 59, 0.8);
+            color: #f8fafc;
+            border: 1px solid #475569;
+            border-left: 4px solid #38bdf8; /* Clean side accent */
             padding: 15px 20px;
             font-size: 16px;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 500;
             text-align: left;
             text-decoration: none;
-            box-shadow: 0 0 8px rgba(139, 0, 33, 0.6);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            position: relative;
         }
         .dashboard-btn:hover {
-            background: #8b0021;
-            color: #ffffff;
-            border-color: #c70039;
-            box-shadow: 0 0 15px #c70039;
+            background: #334155;
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
         
         /* Dropdown Sub-menu */
@@ -179,7 +174,7 @@
             display: none;
             width: 85%;
             margin: 0 auto 15px auto;
-            border-left: 2px solid #8b0021;
+            border-left: 2px solid #38bdf8;
             padding-left: 15px;
         }
         .sub-btn {
@@ -187,8 +182,8 @@
             width: 100%;
             margin: 8px 0;
             background: transparent;
-            color: #ffb3c6;
-            border: 1px solid #5c0016;
+            color: #cbd5e1;
+            border: 1px solid #334155;
             padding: 10px 15px;
             font-size: 14px;
             border-radius: 5px;
@@ -198,10 +193,9 @@
             transition: 0.3s;
         }
         .sub-btn:hover {
-            background: #8b0021;
-            color: #fff;
-            border-color: #c70039;
-            box-shadow: 0 0 10px #c70039;
+            background: #1e293b;
+            color: #38bdf8;
+            border-color: #38bdf8;
         }
     </style>
 </head>
@@ -239,7 +233,7 @@
 
         <!-- Dashboard Section -->
         <div id="dashboardSection" class="dashboard-box">
-            <h3 style="color: #ffccd5; text-shadow: 0 0 10px #c70039; margin-bottom: 25px;">Welcome to the Dashboard</h3>
+            <h3 style="color: #cbd5e1; margin-bottom: 25px; font-weight: normal;">Welcome to the Dashboard</h3>
             
             <!-- Direct Link Buttons -->
             <a href="https://script.google.com/macros/s/AKfycbyovtnQNlQujEe5fldZxNaG346rb6gP0v1JCPijQb6Z3M0bZaVxMsnn4fDa9nMl0gk/exec" target="_blank" class="dashboard-btn">1. Class Teacher Login</a>
