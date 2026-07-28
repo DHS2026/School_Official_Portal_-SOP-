@@ -5,121 +5,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhainagar High School - SOP</title>
     <style>
+        /* Blacked Maroon & Neon Theme */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f8;
+            background: radial-gradient(circle at center, #3b0005 0%, #0a0000 100%);
+            color: #ffffff;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
         .container {
-            background-color: #ffffff;
+            background-color: rgba(20, 0, 5, 0.85);
             width: 100%;
             max-width: 650px;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid #ff0044;
+            box-shadow: 0 0 20px #ff0044, inset 0 0 15px #ff0044;
             text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Neon Logo Effect */
+        .logo-container {
+            margin-bottom: 20px;
         }
         .logo {
             width: 120px;
-            height: auto;
-            margin-bottom: 15px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #fff;
+            border: 3px solid #00f3ff;
+            box-shadow: 0 0 15px #00f3ff, 0 0 30px #00f3ff, inset 0 0 15px #00f3ff;
+            animation: pulse-neon 2s infinite alternate;
         }
+        @keyframes pulse-neon {
+            0% { box-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff; }
+            100% { box-shadow: 0 0 20px #00f3ff, 0 0 40px #00f3ff, 0 0 60px #00f3ff; }
+        }
+
+        /* Typography */
         .school-name {
-            color: #003366;
-            font-size: 26px;
+            color: #ff3366;
+            font-size: 28px;
             font-weight: bold;
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 0 10px #ff0044, 0 0 20px #ff0044;
+            letter-spacing: 1px;
         }
         .school-details {
-            color: #444;
-            font-size: 16px;
-            margin: 3px 0;
+            color: #ffcccc;
+            font-size: 15px;
+            margin: 4px 0;
+            text-shadow: 0 0 5px #ff88aa;
         }
         hr {
-            margin: 30px 0;
+            margin: 25px 0;
             border: 0;
-            border-top: 2px solid #ddd;
+            border-top: 1px solid #ff0044;
+            box-shadow: 0 0 10px #ff0044;
         }
         .portal-title {
-            color: #cc0000;
-            font-size: 22px;
+            color: #00f3ff;
+            font-size: 24px;
             margin-bottom: 25px;
+            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        /* Login Section Styles */
+
+        /* Login Box (Neon Style) */
         .login-box {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #eee;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ff0044;
+            box-shadow: 0 0 15px rgba(255, 0, 68, 0.3);
         }
         .input-field {
             width: 80%;
             padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            background: #110000;
+            border: 1px solid #ff0044;
             border-radius: 5px;
+            color: #00f3ff;
             font-size: 16px;
+            outline: none;
+            box-shadow: inset 0 0 5px #ff0044;
         }
-        .captcha-container {
-            margin: 15px 0;
-        }
+        .input-field::placeholder { color: #888; }
+        .input-field:focus { box-shadow: 0 0 10px #ff0044, inset 0 0 10px #ff0044; }
+        
+        .captcha-container { margin: 15px 0; }
         .captcha-text {
             display: inline-block;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
-            letter-spacing: 5px;
-            background-color: #e0e0e0;
-            color: #333;
-            padding: 10px 20px;
+            letter-spacing: 6px;
+            background: #220005;
+            color: #00f3ff;
+            padding: 10px 25px;
             border-radius: 5px;
+            border: 1px dashed #00f3ff;
+            text-shadow: 0 0 10px #00f3ff;
             text-decoration: line-through;
             user-select: none;
         }
         .btn-submit {
-            background-color: #003366;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 16px;
+            background: transparent;
+            color: #ff0044;
+            border: 2px solid #ff0044;
+            padding: 12px 35px;
+            font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px #ff0044;
+            transition: 0.3s;
         }
         .btn-submit:hover {
-            background-color: #002244;
+            background: #ff0044;
+            color: #fff;
+            box-shadow: 0 0 20px #ff0044, 0 0 40px #ff0044;
         }
         .error-msg {
-            color: red;
+            color: #ff3333;
             font-weight: bold;
+            text-shadow: 0 0 5px red;
             margin-bottom: 10px;
             display: none;
         }
-        /* Dashboard Section Styles */
+
+        /* Dashboard & Neon Buttons */
         .dashboard-box {
             display: none;
             margin-top: 20px;
         }
         .dashboard-btn {
             display: block;
-            width: 85%;
+            width: 90%;
             margin: 12px auto;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            padding: 15px 20px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             text-align: left;
-            padding-left: 20px;
+            text-decoration: none;
+            box-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
         }
         .dashboard-btn:hover {
-            background-color: #218838;
+            background: #00f3ff;
+            color: #000;
+            box-shadow: 0 0 20px #00f3ff;
+        }
+        
+        /* Dropdown Sub-menu */
+        .sub-menu {
+            display: none;
+            width: 85%;
+            margin: 0 auto 15px auto;
+            border-left: 2px solid #ff0044;
+            padding-left: 15px;
+        }
+        .sub-btn {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            background: transparent;
+            color: #ffb3c6;
+            border: 1px solid #ff0044;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .sub-btn:hover {
+            background: #ff0044;
+            color: #fff;
+            box-shadow: 0 0 15px #ff0044;
         }
     </style>
 </head>
@@ -127,7 +205,9 @@
 
     <div class="container">
         <!-- Header Section -->
-        <img src="school_logo_preview.png" alt="School Logo" class="logo">
+        <div class="logo-container">
+            <img src="school_logo_preview.png" alt="School Logo" class="logo">
+        </div>
         <h1 class="school-name">DHAINAGAR HIGH SCHOOL[H.S.]</h1>
         <p class="school-details"><strong>Co. Ed. & Govt. Sponsored</strong></p>
         <p class="school-details">Estd.: 1973</p>
@@ -153,16 +233,35 @@
             <button class="btn-submit" onclick="verifyLogin()">Login</button>
         </div>
 
-        <!-- Dashboard Section (Hidden by default) -->
+        <!-- Dashboard Section -->
         <div id="dashboardSection" class="dashboard-box">
-            <h3 style="color: #003366; margin-bottom: 20px;">Welcome to the Portal</h3>
-            <button class="dashboard-btn">1. Class Teacher Login</button>
-            <button class="dashboard-btn">2. All teacher's login</button>
-            <button class="dashboard-btn">3. Office Login</button>
-            <button class="dashboard-btn">4. Academic login</button>
-            <button class="dashboard-btn">5. Admin Login</button>
-            <button class="dashboard-btn">6. Student view</button>
-            <button class="dashboard-btn">7. Important link</button>
+            <h3 style="color: #fff; text-shadow: 0 0 10px #fff; margin-bottom: 25px;">Welcome to the Dashboard</h3>
+            
+            <!-- Direct Link Buttons -->
+            <a href="https://script.google.com/macros/s/AKfycbyovtnQNlQujEe5fldZxNaG346rb6gP0v1JCPijQb6Z3M0b শারীরিক/exec" target="_blank" class="dashboard-btn">1. Class Teacher Login</a>
+            <a href="https://script.google.com/macros/s/AKfycbxtVdHmBHQXwd6lJFY0nh3myei7jKlRWat5IyHxlYYKHpEowJqCRSKQr32cszDB_5U/exec" target="_blank" class="dashboard-btn">2. All teacher's login</a>
+            <a href="https://script.google.com/macros/s/AKfycbzQX0KN_WZw6SznlcmkbGEyRXwYLZHVXvENOa0JWQmSgSbYiV5KQ0feu0Cf_Q8J0cCK/exec" target="_blank" class="dashboard-btn">3. Office Login</a>
+            
+            <!-- Dropdown Button 4 -->
+            <button class="dashboard-btn" onclick="toggleMenu('menu4')">4. Academic login ▼</button>
+            <div id="menu4" class="sub-menu">
+                <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="sub-btn">Male/Female Count</a>
+                <a href="https://script.google.com/macros/s/AKfycbyovtnQNlQujEe5fldZxNaG346rb6gP0v1JCPijQb6Z3M0bZaVxMsnn4fDa9nMl0gk/exec" target="_blank" class="sub-btn">Class Teacher assign</a>
+                <a href="https://script.google.com/macros/s/AKfycbyeP8AL6C2TWJ_Hikql177KQJvJZHEH4gRYJsrP0kBTX5DBlYegPt9hJlUQRUsKMOI/exec" target="_blank" class="sub-btn">Class Routine Maker</a>
+                <a href="https://script.google.com/macros/s/AKfycbzMCHWV8urLX3tvZEmpRIu-Ib6Rh6SQ1B0Lb073uwiEtrY-WG3tiyTPbwbfep9DsA0M/exec" target="_blank" class="sub-btn">Print/Pdf Routine</a>
+            </div>
+
+            <!-- Dropdown Button 5 -->
+            <button class="dashboard-btn" onclick="toggleMenu('menu5')">5. Admin Login ▼</button>
+            <div id="menu5" class="sub-menu">
+                <a href="https://script.google.com/macros/s/AKfycbw6eOeOSzAgKGV58To48_zAlHDAD7gkk6kZsoR7BAkiKvnkuIGP-g2fsyIGBsNYQ48/exec?page=admin" target="_blank" class="sub-btn">Teacher's Sub Assign</a>
+                <a href="https://script.google.com/macros/s/AKfycbwBTcWfFzyBuOPn8-xhFbtjH-PVyeE387k2ZYHY8Gw_Xrc7hewPp-Eb4woKdfqbx7Jp/exec?page=admin" target="_blank" class="sub-btn">Result Permission</a>
+                <a href="#" class="sub-btn">Notice (Blank)</a>
+            </div>
+
+            <!-- Direct Link Buttons -->
+            <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">6. Student view</a>
+            <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">7. Important link</a>
         </div>
     </div>
 
@@ -170,33 +269,45 @@
     <script>
         let currentCaptcha = "";
 
-        // Function to generate a 6-digit random captcha
+        // Generate 6-digit random captcha
         function generateCaptcha() {
             currentCaptcha = Math.floor(100000 + Math.random() * 900000).toString();
             document.getElementById("captchaCode").innerText = currentCaptcha;
-            document.getElementById("captchaInput").value = ""; // Clear previous input
+            document.getElementById("captchaInput").value = ""; 
         }
 
-        // Function to verify login credentials
+        // Verify Login
         function verifyLogin() {
             const pass = document.getElementById("loginPassword").value;
             const userCaptcha = document.getElementById("captchaInput").value;
             const errorMsg = document.getElementById("errorMsg");
 
-            // Check Password and Captcha
             if (pass === "Dhainagar@2019" && userCaptcha === currentCaptcha) {
-                // Success: Hide Login, Show Dashboard
+                // Fade out login and fade in dashboard
                 document.getElementById("loginSection").style.display = "none";
-                document.getElementById("dashboardSection").style.display = "block";
+                const dashboard = document.getElementById("dashboardSection");
+                dashboard.style.display = "block";
+                // simple animation
+                dashboard.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800 });
             } else {
-                // Failure: Show Error and Generate New Captcha
                 errorMsg.style.display = "block";
                 generateCaptcha();
-                document.getElementById("loginPassword").value = ""; // Clear password field
+                document.getElementById("loginPassword").value = "";
             }
         }
 
-        // Initialize Captcha on page load
+        // Toggle Sub-menu visibility for buttons 4 and 5
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+                menu.animate([{ opacity: 0, transform: "translateY(-10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 300 });
+            }
+        }
+
+        // Initialize Captcha
         window.onload = generateCaptcha;
     </script>
 
