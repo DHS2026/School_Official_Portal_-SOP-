@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhainagar High School - SOP</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 650px;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .school-name {
+            color: #003366;
+            font-size: 26px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .school-details {
+            color: #444;
+            font-size: 16px;
+            margin: 3px 0;
+        }
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 2px solid #ddd;
+        }
+        .portal-title {
+            color: #cc0000;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+        /* Login Section Styles */
+        .login-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .input-field {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .captcha-container {
+            margin: 15px 0;
+        }
+        .captcha-text {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: line-through;
+            user-select: none;
+        }
+        .btn-submit {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .btn-submit:hover {
+            background-color: #002244;
+        }
+        .error-msg {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: none;
+        }
+        /* Dashboard Section Styles */
+        .dashboard-box {
+            display: none;
+            margin-top: 20px;
+        }
+        .dashboard-btn {
+            display: block;
+            width: 85%;
+            margin: 12px auto;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .dashboard-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <img src="school_logo_preview.png" alt="School Logo" class="logo">
+        <h1 class="school-name">DHAINAGAR HIGH SCHOOL[H.S.]</h1>
+        <p class="school-details"><strong>Co. Ed. & Govt. Sponsored</strong></p>
+        <p class="school-details">Estd.: 1973</p>
+        <p class="school-details">Telighata, Tapan, Dakshin Dinajpur, 733127</p>
+
+        <hr>
+
+        <!-- Portal Heading -->
+        <h2 class="portal-title">School Official Portal (SOP)</h2>
+
+        <!-- Login Section -->
+        <div id="loginSection" class="login-box">
+            <p id="errorMsg" class="error-msg">Incorrect Password or Captcha!</p>
+            
+            <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password">
+            
+            <div class="captcha-container">
+                <div id="captchaCode" class="captcha-text"></div>
+            </div>
+            
+            <input type="text" id="captchaInput" class="input-field" placeholder="Enter 6-digit Captcha" maxlength="6">
+            <br>
+            <button class="btn-submit" onclick="verifyLogin()">Login</button>
+        </div>
+
+        <!-- Dashboard Section (Hidden by default) -->
+        <div id="dashboardSection" class="dashboard-box">
+            <h3 style="color: #003366; margin-bottom: 20px;">Welcome to the Portal</h3>
+            <button class="dashboard-btn">1. Class Teacher Login</button>
+            <button class="dashboard-btn">2. All teacher's login</button>
+            <button class="dashboard-btn">3. Office Login</button>
+            <button class="dashboard-btn">4. Academic login</button>
+            <button class="dashboard-btn">5. Admin Login</button>
+            <button class="dashboard-btn">6. Student view</button>
+            <button class="dashboard-btn">7. Important link</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Logic -->
+    <script>
+        let currentCaptcha = "";
+
+        // Function to generate a 6-digit random captcha
+        function generateCaptcha() {
+            currentCaptcha = Math.floor(100000 + Math.random() * 900000).toString();
+            document.getElementById("captchaCode").innerText = currentCaptcha;
+            document.getElementById("captchaInput").value = ""; // Clear previous input
+        }
+
+        // Function to verify login credentials
+        function verifyLogin() {
+            const pass = document.getElementById("loginPassword").value;
+            const userCaptcha = document.getElementById("captchaInput").value;
+            const errorMsg = document.getElementById("errorMsg");
+
+            // Check Password and Captcha
+            if (pass === "Dhainagar@2019" && userCaptcha === currentCaptcha) {
+                // Success: Hide Login, Show Dashboard
+                document.getElementById("loginSection").style.display = "none";
+                document.getElementById("dashboardSection").style.display = "block";
+            } else {
+                // Failure: Show Error and Generate New Captcha
+                errorMsg.style.display = "block";
+                generateCaptcha();
+                document.getElementById("loginPassword").value = ""; // Clear password field
+            }
+        }
+
+        // Initialize Captcha on page load
+        window.onload = generateCaptcha;
+    </script>
+
+</body>
+</html>
