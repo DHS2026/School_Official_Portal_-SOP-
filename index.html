@@ -12,9 +12,12 @@
             color: #f8fafc;
             margin: 0;
             padding: 20px;
+            padding-bottom: 90px; /* Added space so the footer doesn't overlap the container on small screens */
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            position: relative; /* Added for absolute footer positioning */
+            box-sizing: border-box;
         }
         .container {
             background-color: rgba(15, 23, 42, 0.85);
@@ -26,6 +29,8 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
             text-align: center;
             backdrop-filter: blur(8px);
+            height: fit-content; /* Keeps container tightly wrapping its content */
+            z-index: 2;
         }
         
         /* Subtle Logo Effect */
@@ -60,6 +65,13 @@
             color: #cbd5e1; /* Soft Light Gray */
             font-size: 15px;
             margin: 4px 0;
+        }
+        .date-badge {
+            color: #38bdf8;
+            font-weight: 600;
+            margin: 10px 0 15px 0;
+            font-size: 15px;
+            letter-spacing: 0.5px;
         }
         hr {
             margin: 25px 0;
@@ -139,6 +151,15 @@
             margin-bottom: 10px;
             display: none;
         }
+        .countdown-timer {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        .countdown-timer span {
+            color: #fbbf24;
+            font-weight: bold;
+        }
 
         /* Dashboard & Clean Buttons */
         .dashboard-box {
@@ -167,6 +188,18 @@
             background: #334155;
             border-color: #38bdf8;
             box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            border-left: 4px solid #ef4444;
+            color: #fca5a5;
+            text-align: center;
+        }
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.4);
+            border-color: #ef4444;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
         }
 
         /* Idle / Screensaver Overlay */
@@ -206,6 +239,23 @@
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
+
+        /* Footer Section */
+        .site-footer {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+        .site-footer span {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -226,6 +276,9 @@
         <p class="school-details"><strong>Co. Ed. & Govt. Sponsored</strong></p>
         <p class="school-details">Estd.: 1973</p>
         <p class="school-details">Telighata, Tapan, Dakshin Dinajpur, 733127</p>
+        
+        <!-- Day with Date (dd-mmm-yyyy format) -->
+        <div id="currentDateDisplay" class="date-badge"></div>
 
         <hr>
 
@@ -245,27 +298,58 @@
             <input type="text" id="captchaInput" class="input-field" placeholder="Enter 6-digit Captcha" maxlength="6">
             <br>
             <button class="btn-submit" onclick="verifyLogin()">Login</button>
+            
+            <div class="countdown-timer">
+                Screen Saver locks in: <span id="timerVal">05:00</span>
+            </div>
         </div>
 
         <!-- Dashboard Section -->
         <div id="dashboardSection" class="dashboard-box">
-            <h3 style="color: #cbd5e1; margin-bottom: 25px; font-weight: normal;">Welcome to the Dashboard</h3>
+            <h3 style="color: #cbd5e1; margin-bottom: 20px; font-weight: normal;">Welcome to the Dashboard</h3>
             
-            <!-- Updated Dashboard Links -->
+            <!-- Dashboard Links -->
             <a href="https://script.google.com/macros/s/AKfycbzohbnvyKh_hepqeFoRZtmPNkVtY7K4RqMLRbh9P8I9NL_kpp_WwK6b-4o4ESZ35rU/exec" target="_blank" class="dashboard-btn">1. Teacher Dashboard</a>
             <a href="https://script.google.com/macros/s/AKfycbxlsfgjoLYH9wmPwpx9EkOcohhGyRfI6hxea4bhFZC40wbM2JeoZOt6SNG1iH0IeZs5/exec" target="_blank" class="dashboard-btn">2. Academic Dashboard</a>
             <a href="https://script.google.com/macros/s/AKfycbyfljDAtgInsCJbKst_GH36CUD0NYliTAoaR2MQI18524cNPSYUFIBLkq0vaAtAlKI/exec" target="_blank" class="dashboard-btn">3. HM/Admin Dashboard</a>
             <a href="https://script.google.com/macros/s/AKfycbz8V5SCaBgAXdxyyI6Yp_kRjvRrs0Bs3r1lHI5XTOGJjKWSO9UFhR-hoJ2-igBgEldb/exec" target="_blank" class="dashboard-btn">4. Office login</a>
             <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">5. Student view</a>
             <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">6. Important link</a>
+            
+            <!-- Logout Button -->
+            <button class="dashboard-btn logout-btn" onclick="logout()">Logout</button>
         </div>
     </div>
 
-    <!-- JavaScript for Logic & Inactivity Timer -->
+    <!-- Added Footer aligned at the bottom -->
+    <div class="site-footer">
+        <span>Empowering Education Through Technology.</span>
+        <span>&copy; 2026 Dhainagar High School (H.S.). All Rights Reserved.</span>
+        <span>This site is designed by Sovit Ranjan Sarkar, Assistant Teacher at Dhainagar High School.</span>
+    </div>
+
+    <!-- JavaScript for Logic & Timers -->
     <script>
         let currentCaptcha = "";
         let idleTimer;
-        const IDLE_TIMEOUT = 5 * 60 * 1000; // 5 Minutes in milliseconds
+        let countdownInterval;
+        const TOTAL_IDLE_TIME = 5 * 60; // 5 minutes in seconds
+        let secondsLeft = TOTAL_IDLE_TIME;
+
+        // Format Date to Day, dd-mmm-yyyy
+        function displayCurrentDate() {
+            const today = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            const dayName = days[today.getDay()];
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mmm = months[today.getMonth()];
+            const yyyy = today.getFullYear();
+
+            const formattedDate = `${dayName}, ${dd}-${mmm}-${yyyy}`;
+            document.getElementById("currentDateDisplay").innerText = formattedDate;
+        }
 
         // Generate 6-digit random captcha
         function generateCaptcha() {
@@ -281,11 +365,11 @@
             const errorMsg = document.getElementById("errorMsg");
 
             if (pass === "Dhainagar@2019" && userCaptcha === currentCaptcha) {
-                // Fade out login and fade in dashboard
                 document.getElementById("loginSection").style.display = "none";
                 const dashboard = document.getElementById("dashboardSection");
                 dashboard.style.display = "block";
                 dashboard.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800 });
+                resetIdleTimer();
             } else {
                 errorMsg.style.display = "block";
                 generateCaptcha();
@@ -293,15 +377,50 @@
             }
         }
 
+        // Logout Functionality
+        function logout() {
+            document.getElementById("dashboardSection").style.display = "none";
+            document.getElementById("loginSection").style.display = "block";
+            document.getElementById("loginPassword").value = "";
+            document.getElementById("errorMsg").style.display = "none";
+            generateCaptcha();
+            resetIdleTimer();
+        }
+
+        // Update Clock Display (MM:SS)
+        function updateTimerDisplay() {
+            const mins = Math.floor(secondsLeft / 60);
+            const secs = secondsLeft % 60;
+            const formattedTime = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            const timerEl = document.getElementById("timerVal");
+            if (timerEl) {
+                timerEl.innerText = formattedTime;
+            }
+        }
+
         // Reset inactivity timer on user interaction
         function resetIdleTimer() {
+            secondsLeft = TOTAL_IDLE_TIME;
+            updateTimerDisplay();
+
+            clearInterval(countdownInterval);
             clearTimeout(idleTimer);
-            idleTimer = setTimeout(triggerIdleScreen, IDLE_TIMEOUT);
+
+            // Start countdown ticker every second
+            countdownInterval = setInterval(() => {
+                if (secondsLeft > 0) {
+                    secondsLeft--;
+                    updateTimerDisplay();
+                }
+            }, 1000);
+
+            // Trigger screen saver when timeout reaches
+            idleTimer = setTimeout(triggerIdleScreen, TOTAL_IDLE_TIME * 1000);
         }
 
         // Trigger Idle Screensaver Mode
         function triggerIdleScreen() {
-            // Hide dashboard / login and show big logo idle screen
+            clearInterval(countdownInterval);
             document.getElementById("dashboardSection").style.display = "none";
             document.getElementById("loginSection").style.display = "block";
             document.getElementById("loginPassword").value = "";
@@ -318,6 +437,7 @@
 
         // Initialize listeners and timers
         window.onload = function() {
+            displayCurrentDate();
             generateCaptcha();
             
             // Event listeners to detect activity
