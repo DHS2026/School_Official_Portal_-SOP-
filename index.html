@@ -12,11 +12,11 @@
             color: #f8fafc;
             margin: 0;
             padding: 20px;
-            padding-bottom: 90px; /* Added space so the footer doesn't overlap the container on small screens */
+            padding-bottom: 90px; /* Space so footer doesn't overlap container */
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            position: relative; /* Added for absolute footer positioning */
+            position: relative;
             box-sizing: border-box;
         }
         .container {
@@ -29,7 +29,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
             text-align: center;
             backdrop-filter: blur(8px);
-            height: fit-content; /* Keeps container tightly wrapping its content */
+            height: fit-content;
             z-index: 2;
         }
         
@@ -166,6 +166,37 @@
             display: none;
             margin-top: 20px;
         }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .welcome-text {
+            color: #cbd5e1;
+            font-size: 16px;
+            font-weight: normal;
+            margin: 0;
+        }
+        .logout-top-btn {
+            background-color: #ef4444;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+            transition: 0.3s;
+        }
+        .logout-top-btn:hover {
+            background-color: #dc2626;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
+        }
+
         .dashboard-btn {
             display: block;
             width: 90%;
@@ -188,18 +219,6 @@
             background: #334155;
             border-color: #38bdf8;
             box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
-        }
-        .logout-btn {
-            background: rgba(239, 68, 68, 0.2);
-            border-color: #ef4444;
-            border-left: 4px solid #ef4444;
-            color: #fca5a5;
-            text-align: center;
-        }
-        .logout-btn:hover {
-            background: rgba(239, 68, 68, 0.4);
-            border-color: #ef4444;
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
         }
 
         /* Idle / Screensaver Overlay */
@@ -306,7 +325,10 @@
 
         <!-- Dashboard Section -->
         <div id="dashboardSection" class="dashboard-box">
-            <h3 style="color: #cbd5e1; margin-bottom: 20px; font-weight: normal;">Welcome to the Dashboard</h3>
+            <div class="dashboard-header">
+                <h3 class="welcome-text">Welcome to the Dashboard</h3>
+                <button class="logout-top-btn" onclick="logout()">Logout</button>
+            </div>
             
             <!-- Dashboard Links -->
             <a href="https://script.google.com/macros/s/AKfycbzohbnvyKh_hepqeFoRZtmPNkVtY7K4RqMLRbh9P8I9NL_kpp_WwK6b-4o4ESZ35rU/exec" target="_blank" class="dashboard-btn">1. Teacher Dashboard</a>
@@ -315,13 +337,10 @@
             <a href="https://script.google.com/macros/s/AKfycbz8V5SCaBgAXdxyyI6Yp_kRjvRrs0Bs3r1lHI5XTOGJjKWSO9UFhR-hoJ2-igBgEldb/exec" target="_blank" class="dashboard-btn">4. Office login</a>
             <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">5. Student view</a>
             <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">6. Important link</a>
-            
-            <!-- Logout Button -->
-            <button class="dashboard-btn logout-btn" onclick="logout()">Logout</button>
         </div>
     </div>
 
-    <!-- Added Footer aligned at the bottom -->
+    <!-- Footer Section -->
     <div class="site-footer">
         <span>Empowering Education Through Technology.</span>
         <span>&copy; 2026 Dhainagar High School (H.S.). All Rights Reserved.</span>
