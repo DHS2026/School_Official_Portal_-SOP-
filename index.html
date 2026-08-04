@@ -168,38 +168,54 @@
             border-color: #38bdf8;
             box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
-        
-        /* Dropdown Sub-menu */
-        .sub-menu {
+
+        /* Idle / Screensaver Overlay */
+        #idleScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
             display: none;
-            width: 85%;
-            margin: 0 auto 15px auto;
-            border-left: 2px solid #38bdf8;
-            padding-left: 15px;
-        }
-        .sub-btn {
-            display: block;
-            width: 100%;
-            margin: 8px 0;
-            background: transparent;
-            color: #cbd5e1;
-            border: 1px solid #334155;
-            padding: 10px 15px;
-            font-size: 14px;
-            border-radius: 5px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
             cursor: pointer;
-            text-align: left;
-            text-decoration: none;
-            transition: 0.3s;
         }
-        .sub-btn:hover {
-            background: #1e293b;
-            color: #38bdf8;
-            border-color: #38bdf8;
+        .idle-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #fff;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
+            animation: pulse-large 2s infinite alternate;
+        }
+        @keyframes pulse-large {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 0 45px rgba(56, 189, 248, 0.9); }
+        }
+        .idle-text {
+            color: #fbbf24;
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
+
+    <!-- Idle / Screensaver Overlay Screen -->
+    <div id="idleScreen" onclick="resetIdleState()">
+        <img src="school_logo_preview.png" alt="School Logo" class="idle-logo">
+        <div class="idle-text">Dhainagar High School [H.S.]</div>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 10px;">Click anywhere or move mouse to return to portal</p>
+    </div>
 
     <div class="container">
         <!-- Header Section -->
@@ -235,39 +251,21 @@
         <div id="dashboardSection" class="dashboard-box">
             <h3 style="color: #cbd5e1; margin-bottom: 25px; font-weight: normal;">Welcome to the Dashboard</h3>
             
-            <!-- Direct Link Buttons -->
-            <a href="https://script.google.com/macros/s/AKfycbyovtnQNlQujEe5fldZxNaG346rb6gP0v1JCPijQb6Z3M0bZaVxMsnn4fDa9nMl0gk/exec" target="_blank" class="dashboard-btn">1. Class Teacher Login</a>
-            <a href="https://script.google.com/macros/s/AKfycbxtVdHmBHQXwd6lJFY0nh3myei7jKlRWat5IyHxlYYKHpEowJqCRSKQr32cszDB_5U/exec" target="_blank" class="dashboard-btn">2. All teacher's login</a>
-            <a href="https://script.google.com/macros/s/AKfycbz8V5SCaBgAXdxyyI6Yp_kRjvRrs0Bs3r1lHI5XTOGJjKWSO9UFhR-hoJ2-igBgEldb/exec" target="_blank" class="dashboard-btn">3. Office Login</a>
-            
-            <!-- Dropdown Button 4 -->
-            <button class="dashboard-btn" onclick="toggleMenu('menu4')">4. Academic login ▼</button>
-            <div id="menu4" class="sub-menu">
-                <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="sub-btn">Male/Female Count</a>
-                <a href="https://script.google.com/macros/s/AKfycbyovtnQNlQujEe5fldZxNaG346rb6gP0v1JCPijQb6Z3M0bZaVxMsnn4fDa9nMl0gk/exec" target="_blank" class="sub-btn">Class Teacher assign</a>
-                <a href="https://script.google.com/macros/s/AKfycbyeP8AL6C2TWJ_Hikql177KQJvJZHEH4gRYJsrP0kBTX5DBlYegPt9hJlUQRUsKMOI/exec" target="_blank" class="sub-btn">Class Routine Maker</a>
-                <a href="https://script.google.com/macros/s/AKfycbzMCHWV8urLX3tvZEmpRIu-Ib6Rh6SQ1B0Lb073uwiEtrY-WG3tiyTPbwbfep9DsA0M/exec" target="_blank" class="sub-btn">Print/Pdf Routine</a>
-                <!-- New Added Button -->
-                <a href="https://dhs2026.github.io/No_input_check/" target="_blank" class="sub-btn">Subject No Input Check</a>
-            </div>
-
-            <!-- Dropdown Button 5 -->
-            <button class="dashboard-btn" onclick="toggleMenu('menu5')">5. Admin Login ▼</button>
-            <div id="menu5" class="sub-menu">
-                <a href="https://script.google.com/macros/s/AKfycbw6eOeOSzAgKGV58To48_zAlHDAD7gkk6kZsoR7BAkiKvnkuIGP-g2fsyIGBsNYQ48/exec?page=admin" target="_blank" class="sub-btn">Teacher's Sub Assign</a>
-                <a href="https://script.google.com/macros/s/AKfycbwBTcWfFzyBuOPn8-xhFbtjH-PVyeE387k2ZYHY8Gw_Xrc7hewPp-Eb4woKdfqbx7Jp/exec?page=admin" target="_blank" class="sub-btn">Result Permission</a>
-                <a href="#" class="sub-btn">Notice (Blank)</a>
-            </div>
-
-            <!-- Direct Link Buttons -->
-            <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">6. Student view</a>
-            <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">7. Important link</a>
+            <!-- Updated Dashboard Links -->
+            <a href="https://script.google.com/macros/s/AKfycbzohbnvyKh_hepqeFoRZtmPNkVtY7K4RqMLRbh9P8I9NL_kpp_WwK6b-4o4ESZ35rU/exec" target="_blank" class="dashboard-btn">1. Teacher Dashboard</a>
+            <a href="https://script.google.com/macros/s/AKfycbxlsfgjoLYH9wmPwpx9EkOcohhGyRfI6hxea4bhFZC40wbM2JeoZOt6SNG1iH0IeZs5/exec" target="_blank" class="dashboard-btn">2. Academic Dashboard</a>
+            <a href="https://script.google.com/macros/s/AKfycbyfljDAtgInsCJbKst_GH36CUD0NYliTAoaR2MQI18524cNPSYUFIBLkq0vaAtAlKI/exec" target="_blank" class="dashboard-btn">3. HM/Admin Dashboard</a>
+            <a href="https://script.google.com/macros/s/AKfycbz8V5SCaBgAXdxyyI6Yp_kRjvRrs0Bs3r1lHI5XTOGJjKWSO9UFhR-hoJ2-igBgEldb/exec" target="_blank" class="dashboard-btn">4. Office login</a>
+            <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">5. Student view</a>
+            <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">6. Important link</a>
         </div>
     </div>
 
-    <!-- JavaScript for Logic -->
+    <!-- JavaScript for Logic & Inactivity Timer -->
     <script>
         let currentCaptcha = "";
+        let idleTimer;
+        const IDLE_TIMEOUT = 5 * 60 * 1000; // 5 Minutes in milliseconds
 
         // Generate 6-digit random captcha
         function generateCaptcha() {
@@ -295,19 +293,41 @@
             }
         }
 
-        // Toggle Sub-menu visibility for buttons 4 and 5
-        function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-                menu.animate([{ opacity: 0, transform: "translateY(-10px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 300 });
-            }
+        // Reset inactivity timer on user interaction
+        function resetIdleTimer() {
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(triggerIdleScreen, IDLE_TIMEOUT);
         }
 
-        // Initialize Captcha
-        window.onload = generateCaptcha;
+        // Trigger Idle Screensaver Mode
+        function triggerIdleScreen() {
+            // Hide dashboard / login and show big logo idle screen
+            document.getElementById("dashboardSection").style.display = "none";
+            document.getElementById("loginSection").style.display = "block";
+            document.getElementById("loginPassword").value = "";
+            generateCaptcha();
+            
+            document.getElementById("idleScreen").style.display = "flex";
+        }
+
+        // Reset when user interacts with idle screen
+        function resetIdleState() {
+            document.getElementById("idleScreen").style.display = "none";
+            resetIdleTimer();
+        }
+
+        // Initialize listeners and timers
+        window.onload = function() {
+            generateCaptcha();
+            
+            // Event listeners to detect activity
+            window.addEventListener("mousemove", resetIdleTimer);
+            window.addEventListener("mousedown", resetIdleTimer);
+            window.addEventListener("keypress", resetIdleTimer);
+            window.addEventListener("touchstart", resetIdleTimer);
+
+            resetIdleTimer(); // Start the timer on load
+        };
     </script>
 
 </body>
