@@ -106,11 +106,33 @@
             font-size: 16px;
             outline: none;
             transition: 0.3s;
+            box-sizing: border-box; /* Added to keep padding inside width */
         }
         .input-field::placeholder { color: #94a3b8; }
         .input-field:focus { 
             border-color: #38bdf8; 
             box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); 
+        }
+
+        /* Password Wrapper for Eye Icon */
+        .password-wrapper {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .password-wrapper .input-field {
+            width: 100%;
+            padding-right: 40px; /* Space for the icon */
+        }
+        .eye-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            user-select: none;
+            color: #94a3b8;
         }
         
         .captcha-container { margin: 15px 0; }
@@ -308,7 +330,11 @@
         <div id="loginSection" class="login-box">
             <p id="errorMsg" class="error-msg">Incorrect Password or Captcha!</p>
             
-            <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password">
+            <!-- Modified Password Input with Eye Icon -->
+            <div class="password-wrapper">
+                <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password">
+                <span class="eye-icon" id="toggleEye" onclick="togglePasswordVisibility()">👁️</span>
+            </div>
             
             <div class="captcha-container">
                 <div id="captchaCode" class="captcha-text"></div>
@@ -331,12 +357,12 @@
             </div>
             
             <!-- Dashboard Links -->
-            <a href="https://script.google.com/macros/s/AKfycbzohbnvyKh_hepqeFoRZtmPNkVtY7K4RqMLRbh9P8I9NL_kpp_WwK6b-4o4ESZ35rU/exec" target="_blank" class="dashboard-btn">1. Teacher Dashboard</a>
-            <a href="https://script.google.com/macros/s/AKfycbyUVb8stMNHS5E46WM802VEEReDy7hMfG_gdfkvoRoE7gk9dRn2Vq875Mw7TbX2h4aU/exec" target="_blank" class="dashboard-btn">2. Academic Dashboard</a>
-            <a href="https://script.google.com/macros/s/AKfycbzIOFgU2B_2B4bpKko23JpjktCnijwQimL7hKGvULHmBdg_7Yo0gDYawz7o5V5htsI/exec" target="_blank" class="dashboard-btn">3. HM/Admin Dashboard</a>
-            <a href="https://script.google.com/macros/s/AKfycbx3ld7PoE0SysP7HNx8wIxhWLoI7u26cTVUecHg-HCXoDLLri4KguP3WiP_00t4Phjq/exec" target="_blank" class="dashboard-btn">4. Office login</a>
-            <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">5. Student view</a>
-            <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">6. Important link</a>
+            <a href="https://script.google.com/macros/s/AKfycbzohbnvyKh_hepqeFoRZtmPNkVtY7K4RqMLRbh9P8I9NL_kpp_WwK6b-4o4ESZ35rU/exec" target="_blank" class="dashboard-btn">1. 👨🏻‍🏫👩🏻‍🏫 Teacher Dashboard</a>
+            <a href="https://script.google.com/macros/s/AKfycbyUVb8stMNHS5E46WM802VEEReDy7hMfG_gdfkvoRoE7gk9dRn2Vq875Mw7TbX2h4aU/exec" target="_blank" class="dashboard-btn">2. 📚📝 Academic Dashboard</a>
+            <a href="https://script.google.com/macros/s/AKfycbzIOFgU2B_2B4bpKko23JpjktCnijwQimL7hKGvULHmBdg_7Yo0gDYawz7o5V5htsI/exec" target="_blank" class="dashboard-btn">3. 👑👨🏻‍💼 HM/Admin Dashboard</a>
+            <a href="https://script.google.com/macros/s/AKfycbx3ld7PoE0SysP7HNx8wIxhWLoI7u26cTVUecHg-HCXoDLLri4KguP3WiP_00t4Phjq/exec" target="_blank" class="dashboard-btn">4. 🖥️🖨 Office login</a>
+            <a href="https://script.google.com/macros/s/AKfycbz2V5EYH5jP3Rf8VyasH9IwTP5FTkGzIOh8JniBon3XJoDsG48DhIVDAHsVyWFpoBc/exec" target="_blank" class="dashboard-btn">5. 🧑‍🎓🔍 Student view</a>
+            <a href="https://script.google.com/macros/s/AKfycbwwgBQAKMM5SHLdo1mQPeDFW9VzRcO7wPJmOMR4rBl58PlVqiEp2ltCCG7kzbEHOMs/exec" target="_blank" class="dashboard-btn">6. 🚨‼️ Important link</a>
         </div>
     </div>
 
@@ -377,6 +403,19 @@
             document.getElementById("captchaInput").value = ""; 
         }
 
+        // Toggle Password Visibility Logic
+        function togglePasswordVisibility() {
+            const passInput = document.getElementById("loginPassword");
+            const eyeIcon = document.getElementById("toggleEye");
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                eyeIcon.innerText = "🙈"; 
+            } else {
+                passInput.type = "password";
+                eyeIcon.innerText = "👁️";
+            }
+        }
+
         // Verify Login
         function verifyLogin() {
             const pass = document.getElementById("loginPassword").value;
@@ -392,7 +431,9 @@
             } else {
                 errorMsg.style.display = "block";
                 generateCaptcha();
-                document.getElementById("loginPassword").value = "";
+                document.getElementById("loginPassword").value = ""; // This handles auto-clear
+                document.getElementById("loginPassword").type = "password"; // Reset eye icon state on error
+                document.getElementById("toggleEye").innerText = "👁️";
             }
         }
 
@@ -401,6 +442,8 @@
             document.getElementById("dashboardSection").style.display = "none";
             document.getElementById("loginSection").style.display = "block";
             document.getElementById("loginPassword").value = "";
+            document.getElementById("loginPassword").type = "password"; 
+            document.getElementById("toggleEye").innerText = "👁️";
             document.getElementById("errorMsg").style.display = "none";
             generateCaptcha();
             resetIdleTimer();
@@ -443,6 +486,8 @@
             document.getElementById("dashboardSection").style.display = "none";
             document.getElementById("loginSection").style.display = "block";
             document.getElementById("loginPassword").value = "";
+            document.getElementById("loginPassword").type = "password"; 
+            document.getElementById("toggleEye").innerText = "👁️";
             generateCaptcha();
             
             document.getElementById("idleScreen").style.display = "flex";
